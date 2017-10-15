@@ -11,13 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
     private static final String TAG = "FirstActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, this.toString());
+        Log.d(TAG, "Task id is "+getTaskId());
         setContentView(R.layout.first_layout);
 
         Button button1 = (Button) findViewById(R.id.button_1);
@@ -42,11 +42,20 @@ public class FirstActivity extends AppCompatActivity {
 
 //                startActivity(intent);
 //                startActivityForResult(intent,1);
-                // 启动模式，启动自己
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivity(intent);
+
+//                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+//                intent.putExtra("param1","data1");
+//                intent.putExtra("param2","data2");
+//                startActivity(intent);
+                SecondActivity.actionStart(FirstActivity.this,"data1","data2");
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart");
     }
 
     @Override

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".FirstActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:label="This is FirstActivity">
             <intent-filter>
                 <!-- 要是不配置主活动，该程序也能安装但是无法在启动器中看到或者打开这个app -->
@@ -19,10 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity">
+        <activity android:name=".SecondActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="xyz.toor.chalypeng.activitytest.ACTION_START"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="xyz.toor.chalypeng.activitytest.MY_CATEGORY"/>
             </intent-filter>
